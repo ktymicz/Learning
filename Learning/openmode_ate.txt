@@ -1,0 +1,17 @@
+    std::string filename{ "filename.txt" };
+    std::fstream iofs;
+    //iofs.open(filename, iofs.out);
+   // iofs.close();
+    iofs.open(filename, iofs.in|iofs.out| iofs.ate); // the file need to exist or it will fail to open
+    //iofs.seekp(0, iofs.end);
+    //ifs.seekp();
+    if (!iofs.is_open())
+    {
+        std::cout << "failed to open " << filename << '\n';
+    }
+    
+    iofs << "some text;";
+    iofs.seekg(0, std::ios::beg);
+    std::string inF;
+    std::getline(iofs, inF, '\n');
+    std::cout << inF;
