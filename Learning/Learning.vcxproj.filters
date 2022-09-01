@@ -21,6 +21,12 @@
     <ClCompile Include="init_Lambda.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Constructors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file_IO.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -33,6 +39,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="init_Lambda.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constructors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="file_IO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
