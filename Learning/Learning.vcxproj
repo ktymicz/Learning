@@ -147,6 +147,7 @@
     <ClCompile Include="file_IO.cpp" />
     <ClCompile Include="init_Lambda.cpp" />
     <ClCompile Include="Learning.cpp" />
+    <ClCompile Include="STL_Planet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constructors.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="init_Lambda.h" />
     <ClInclude Include="mymoves.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="STL_Planet.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Learning.rc" />

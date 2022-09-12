@@ -4,3 +4,5 @@
 
 void use_ios_ate();
 void use_ios_ate_binary();
+
+void use_ios_ate_Binary_Text();

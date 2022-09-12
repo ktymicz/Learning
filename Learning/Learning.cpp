@@ -11,6 +11,7 @@
 
 #include "init_Lambda.h"
 #include "file_IO.h"
+#include "STL_Planet.h"
 
 
 // functions
@@ -27,8 +28,12 @@ int main() {
    // MoveSemanticsTest::doTests();
     //use_class_init_lambda();
    // use_move();
-    use_ios_ate();
+    //use_ios_ate();
+    //use_ios_ate_binary();
+   // use_ios_ate_Binary_Text();
 
+
+    make_heap_stl();
 }
 
 void use_move()
