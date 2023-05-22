@@ -45,7 +45,8 @@ public:
 	Moveable& operator=(Moveable&& o)
 	{
 		str = std::move(o.str); // explicit move of a member of class type
-		d = std::exchange(o.d, 0); // explicit move of a member of non-class type
+		d = std::exchange(o.d, 0); // explicit move of a member of non-class type, 
+		// requires no Invariant as data != nullptr, so ownership of data can be nullptr
 		s::operator=(std::move(o));
 		std::cout << "n:" << n << ", move assignment\n";
 		s::n = moveAs;
@@ -103,6 +104,7 @@ public:
 		working = std::exchange(m.working, mode::off);
 		str = std::move(m.str);
 		std::cout << ", move assignment\n";
+		return *this;
 	}
 	enum mode { off, one, two, three, four };
 

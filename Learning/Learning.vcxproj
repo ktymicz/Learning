@@ -144,17 +144,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Constructors.cpp" />
+    <ClCompile Include="Driver.cpp" />
     <ClCompile Include="file_IO.cpp" />
     <ClCompile Include="init_Lambda.cpp" />
     <ClCompile Include="Learning.cpp" />
+    <ClCompile Include="Polymorphism.cpp" />
     <ClCompile Include="STL_Planet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constructors.h" />
+    <ClInclude Include="Driver.h" />
     <ClInclude Include="file_IO.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="init_Lambda.h" />
     <ClInclude Include="mymoves.h" />
+    <ClInclude Include="Polymorphism.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="STL_Planet.h" />
   </ItemGroup>

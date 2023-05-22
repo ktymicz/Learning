@@ -33,6 +33,9 @@ void use_ios_ate()
 		std::cout << d1 << " " << fileText;
 	
 	
+
+
+
 }
 void use_ios_ate_binary()
 {

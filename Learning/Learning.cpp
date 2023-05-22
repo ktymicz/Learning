@@ -6,34 +6,167 @@
 #include <vector>
 #include <sstream>
 #include <memory>
+#include <chrono>
+#include <ratio>
+#include <exception>
+
 #include "mymoves.h"
 #include "Constructors.h"
-
 #include "init_Lambda.h"
 #include "file_IO.h"
 #include "STL_Planet.h"
-
-
+#include "Driver.h"
+#include "Polymorphism.h"
 // functions
 void file_RW();
 void lambda();
 void outate();
 void use_class_init_lambda();
 void use_move();
+void use_move_semantics_Driver();
+void use_Chrono();
+void use_ate();
+void use_ate2();
 
-int main() {
+void use_move_semantics_Stupid_driver();
+void use_Polymorphism();
+int main()
+{
+    use_Polymorphism();
+    //try {
+    //    use_ate(); // out|in|ate
+    //    //use_ate2(); // out|ate
+    //}
+    //catch (std::exception& e)
+    //{
+    //    std::cerr << e.what();
+    //}
+    //try
+    //{
+    //    use_move_semantics_Stupid_driver();
+    //}
+    //catch (const std::exception& e)
+    //{
+    //    std::cerr << e.what();
+    //}
+
+    //use_Chrono();
+//    use_move_semantics_Driver();
     //file_RW();
     //outate();
     //lambda();
    // MoveSemanticsTest::doTests();
-    //use_class_init_lambda();
+  //  use_class_init_lambda();
    // use_move();
     //use_ios_ate();
     //use_ios_ate_binary();
    // use_ios_ate_Binary_Text();
 
+    // make_heap_stl();
+    //LOQ::querying_property_stl();
+}
 
-    make_heap_stl();
+
+void use_Polymorphism()
+{
+    using namespace Polymorphism;
+    Base* p;
+    Base* p2;
+    p = new Derived();
+    p2 = new Base();
+    p->foo();
+    p2->foo();
+}
+
+void use_move_semantics_Stupid_driver()
+{
+    using namespace Movable;
+    Driverp d;
+    d.hardp[d.co.hsize - 1] = 33;
+    Driverp d2 = std::move(d);
+    d = Driverp(d2);
+    Driverp d3;
+    std::cout << "copy(d2) " << d << "\nmove(d) " << d2 << "\ndefault " << d3;
+
+}
+
+void use_ate2()
+{
+    std::fstream ofs("wow.txt", std::ios::out | std::ios::ate);
+    if (!ofs) throw std::exception("filed to open file\n");
+    ofs << "data2..,data1.";
+    if (ofs.bad()) throw std::exception("bad after writing to file");
+
+    ofs.close();
+}
+
+void use_ate()
+{
+
+    std::string filename{ "name.txt" };
+
+    fstream ofs(filename, std::ios_base::ate|std::ios_base::out | std::ios::in);
+   if (!ofs) throw std::exception("obj. ofs not created");
+    ofs.seekp(0, std::ios_base::end);
+    ofs << "data..";
+    if (ofs.bad()) throw std::exception("bad");
+    ofs.close();
+}
+
+void use_Chrono()
+{
+    using Sec = std::chrono::seconds;
+    std::chrono::sys_time d = std::chrono::system_clock::now();
+    std::chrono::seconds sec{ 3 };
+
+    std::cout << "what\n ms \ts\n";
+    for (auto const p : {544ms, 445ms, 33ms, 44ms})
+    {
+        while (true)
+        {
+            auto d2 = std::chrono::system_clock::now();
+            if (d2 - d >= sec)
+            {
+                std::cout << p << '\t' << std::chrono::round<Sec>(d2 - d) << '\n';
+                sec++;
+                break;
+            }
+        }
+    }
+    using rsuck = std::ratio<10>;
+    using suck = std::chrono::duration<int64_t, rsuck>;
+    suck wsu{ 3 };
+    std::cout << (wsu + sec).count() << '\n';
+}
+
+void use_move_semantics_Driver()
+{
+    using namespace Movable;
+    Driver m;
+    Driver m2{ m };
+    Driver m3 = Driver(Driver());
+    Driver s;
+    s.move(20, 20);
+    std::cout << m << m2 << m3 << s;
+    
+    { 
+        Driver moved; 
+        s = std::move(moved);
+    }
+    std::cout << s;
+    
+    
+    int* p = s.hardp.get();
+    std::cout << " p " << p;
+    int* p2 = s.hardp.release();
+    std::cout << " p2 " << p2 << '\n';
+    s.hardp.reset(p2);
+    std::cout << "reset p2, still points to hardp " << p2 << '\n';
+    {
+        p = std::move(s.hardp.release());
+    }
+    s.hardp.reset(std::exchange(p, nullptr));
+    std::cout << "reset p with exchange" << p << '\n';
 }
 
 void use_move()
